@@ -34,19 +34,18 @@ class Student {
 
 public class Students {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Enter number of students: ");
-        int n = scanner.nextInt();
-        Student[] students = new Student[n];
+        try (Scanner scanner = new Scanner(System.in)) {
+            System.out.print("Enter number of students: ");
+            int n = scanner.nextInt();
+            Student[] students = new Student[n];
 
-        for (int i = 0; i < n; i++) {
-            students[i] = new Student();
-            System.out.println("\nEnter details for Student " + (i + 1) + ":");
-            students[i].initialize(scanner);
+            for (int i = 0; i < n; i++) {
+                students[i] = new Student();
+                System.out.println("\nEnter details for Student " + (i + 1) + ":");
+                students[i].initialize(scanner);
+            }
+            
+            for (Student student : students) student.display();
         }
-        
-        for (Student student : students) student.display();
-
-        scanner.close();
     }
 }
